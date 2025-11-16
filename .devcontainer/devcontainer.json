@@ -1,0 +1,51 @@
+{
+  "name": "note-nextjs-convex",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18-bullseye",
+  "remoteUser": "node",
+
+  "containerEnv": {
+    "NEXT_TELEMETRY_DISABLED": "1"
+  },
+
+  "forwardPorts": [3000, 3210, 6790],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js dev server",
+      "onAutoForward": "openBrowser"
+    },
+    "3210": {
+      "label": "Convex dev backend"
+    },
+    "6790": {
+      "label": "Convex dashboard"
+    }
+  },
+
+  "postCreateCommand": "if [ -f package.json ]; then npm install; fi",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.exclude": {
+          "**/.next": true,
+          "**/node_modules": true
+        },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "eamodio.gitlens"
+      ]
+    }
+  }
+}
